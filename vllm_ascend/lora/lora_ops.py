@@ -13,110 +13,56 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""LoRA bgmv/sgmv ops: Triton kernels dispatched through torch custom ops.
+
+Importing lora_ops_triton registers the kernels in the ``vllm_ascend_triton``
+namespace (torch.library.custom_op), so torch._dynamo treats them like the
+stock ``torch.ops._C_ascend.*`` ops.  All runtime checks and AscendC fallbacks
+live inside the eager impls; the wrappers below keep the stock
+vllm_ascend.lora.lora_ops API and stay free of data-dependent Python branches
+so the serving path can be traced with fullgraph=True.
+"""
 import torch
 
-
-def bgmv_shrink(
-    inputs: torch.Tensor,
-    lora_a_weights: torch.Tensor,
-    output_tensor: torch.Tensor,
-    lora_indices_tensor: torch.Tensor,
-    scaling: float = 1.0,
-):
-    return torch.ops._C_ascend.bgmv_shrink(
-        inputs,
-        lora_a_weights,
-        lora_indices_tensor,
-        output_tensor,
-        scaling,
-    )
+from vllm_ascend.lora import lora_ops_triton  # noqa: F401  (registers custom ops)
 
 
-def bgmv_expand(
-    inputs: torch.Tensor,
-    lora_b_weights: torch.Tensor,
-    output_tensor: torch.Tensor,
-    lora_indices_tensor: torch.Tensor,
-    add_inputs: bool = True,
-):
-    return torch.ops._C_ascend.bgmv_expand(
-        inputs,
-        lora_b_weights,
-        lora_indices_tensor,
-        output_tensor,
-        0,
-        output_tensor.size(1),
-    )
+def bgmv_shrink(inputs, lora_a_weights, output_tensor, lora_indices_tensor, scaling=1.0):
+    torch.ops.vllm_ascend_triton.bgmv_shrink(
+        inputs, lora_a_weights, output_tensor, lora_indices_tensor, scaling)
+    return output_tensor
 
 
-def bgmv_expand_slice(
-    inputs: torch.Tensor,
-    lora_b_weights: torch.Tensor,
-    output_tensor: torch.Tensor,
-    lora_indices_tensor: torch.Tensor,
-    slice_offset: int,
-    slice_size: int,
-    add_inputs: bool = True,
-):
-    return torch.ops._C_ascend.bgmv_expand(
-        inputs, lora_b_weights, lora_indices_tensor, output_tensor, slice_offset, slice_size
-    )
+def bgmv_expand(inputs, lora_b_weights, output_tensor, lora_indices_tensor, add_inputs=True):
+    return bgmv_expand_slice(inputs, lora_b_weights, output_tensor, lora_indices_tensor,
+                             0, output_tensor.size(1), add_inputs)
 
 
-def sgmv_shrink(
-    inputs: torch.Tensor,
-    lora_a_weights: torch.Tensor,
-    output_tensor: torch.Tensor,
-    b_seq_start_loc: torch.Tensor,
-    seq_len_tensor: torch.Tensor,
-    lora_indices_tensor: torch.Tensor,
-    batches: int,
-    max_seq_length: int,
-    token_nums: int,
-    scaling: float,
-):
-    return torch.ops._C_ascend.sgmv_shrink(
-        inputs, lora_a_weights, lora_indices_tensor, seq_len_tensor, output_tensor, scaling
-    )
+def bgmv_expand_slice(inputs, lora_b_weights, output_tensor, lora_indices_tensor,
+                      slice_offset, slice_size, add_inputs=True):
+    torch.ops.vllm_ascend_triton.bgmv_expand_slice(
+        inputs, lora_b_weights, output_tensor, lora_indices_tensor, slice_offset, slice_size)
+    return output_tensor
 
 
-def sgmv_expand(
-    inputs: torch.Tensor,
-    lora_b_weights: torch.Tensor,
-    output_tensor: torch.Tensor,
-    b_seq_start_loc: torch.Tensor,
-    seq_len_tensor: torch.Tensor,
-    lora_indices_tensor: torch.Tensor,
-    batches: int,
-    max_seq_length: int,
-    token_nums: int,
-    add_inputs: bool = False,
-):
-    return torch.ops._C_ascend.sgmv_expand(
-        inputs,
-        lora_b_weights,
-        lora_indices_tensor,
-        seq_len_tensor,
-        output_tensor,
-        0,
-        output_tensor.size(1),
-    )
+def sgmv_shrink(inputs, lora_a_weights, output_tensor, b_seq_start_loc, seq_len_tensor,
+                lora_indices_tensor, batches, max_seq_length, token_nums, scaling):
+    torch.ops.vllm_ascend_triton.sgmv_shrink(
+        inputs, lora_a_weights, output_tensor, seq_len_tensor, lora_indices_tensor, scaling)
+    return output_tensor
 
 
-def sgmv_expand_slice(
-    inputs: torch.Tensor,
-    lora_b_weights: torch.Tensor,
-    output_tensor: torch.Tensor,
-    b_seq_start_loc: torch.Tensor,
-    seq_len_tensor: torch.Tensor,
-    lora_indices_tensor: torch.Tensor,
-    batches: int,
-    max_seq_length: int,
-    token_nums: int,
-    slice_offset: int,
-    slice_size: int,
-    add_inputs: bool = False,
-):
-    return torch.ops._C_ascend.sgmv_expand(
-        inputs, lora_b_weights, lora_indices_tensor, seq_len_tensor, output_tensor, slice_offset, slice_size
-    )
+def sgmv_expand(inputs, lora_b_weights, output_tensor, b_seq_start_loc, seq_len_tensor,
+                lora_indices_tensor, batches, max_seq_length, token_nums, add_inputs=False):
+    return sgmv_expand_slice(inputs, lora_b_weights, output_tensor, b_seq_start_loc, seq_len_tensor,
+                             lora_indices_tensor, batches, max_seq_length, token_nums,
+                             0, output_tensor.size(1), add_inputs)
+
+
+def sgmv_expand_slice(inputs, lora_b_weights, output_tensor, b_seq_start_loc, seq_len_tensor,
+                      lora_indices_tensor, batches, max_seq_length, token_nums,
+                      slice_offset, slice_size, add_inputs=False):
+    torch.ops.vllm_ascend_triton.sgmv_expand_slice(
+        inputs, lora_b_weights, output_tensor, seq_len_tensor, lora_indices_tensor,
+        slice_offset, slice_size)
+    return output_tensor
