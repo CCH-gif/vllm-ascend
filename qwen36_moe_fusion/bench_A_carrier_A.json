@@ -1,0 +1,12 @@
+=== dev0 M8192 U256 ===
+RESULT {"M": 8192, "U": 256, "rows": 32, "finite": true, "fused_vs_unfused_mae": 0.09086336195468903, "ref_absmean": 0.5949647426605225, "fused_ms": 0.5575, "unfused_ms": 0.5532, "ratio": 1.0078}
+=== dev0 M4096 U256 ===
+RESULT {"M": 4096, "U": 256, "rows": 16, "finite": true, "fused_vs_unfused_mae": 0.09122016280889511, "ref_absmean": 0.5951039791107178, "fused_ms": 0.5159, "unfused_ms": 0.5257, "ratio": 0.9812}
+=== dev0 M2048 U256 ===
+RESULT {"M": 2048, "U": 256, "rows": 8, "finite": true, "fused_vs_unfused_mae": 0.09055379033088684, "ref_absmean": 0.5928667783737183, "fused_ms": 0.4714, "unfused_ms": 0.4891, "ratio": 0.9639}
+=== dev0 M1024 U256 ===
+RESULT {"M": 1024, "U": 256, "rows": 4, "finite": true, "fused_vs_unfused_mae": 0.5839953422546387, "ref_absmean": 0.0015315951313823462, "fused_ms": 0.4754, "unfused_ms": 0.4899, "ratio": 0.9703}
+=== dev0 M512 U256 ===
+RESULT {"M": 512, "U": 256, "rows": 2, "finite": true, "fused_vs_unfused_mae": 0.5852331519126892, "ref_absmean": 0.0, "fused_ms": 0.4628, "unfused_ms": 0.4765, "ratio": 0.9712}
+=== dev0 M256 U128 ===
+RESULT {"M": 256, "U": 128, "rows": 2, "finite": true, "fused_vs_unfused_mae": 0.45009374618530273, "ref_absmean": 0.16204962134361267, "fused_ms": 0.2859, "unfused_ms": 0.3095, "ratio": 0.9236}

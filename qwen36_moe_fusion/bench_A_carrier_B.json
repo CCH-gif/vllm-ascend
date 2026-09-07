@@ -1,0 +1,14 @@
+=== dev3 M1024 U128 ===
+RESULT {"M": 1024, "U": 128, "rows": 8, "finite": true, "fused_vs_unfused_mae": 0.49431222677230835, "ref_absmean": 0.11213219165802002, "fused_ms": 0.2885, "unfused_ms": 0.3052, "ratio": 0.9455}
+=== dev3 M512 U128 ===
+RESULT {"M": 512, "U": 128, "rows": 4, "finite": true, "fused_vs_unfused_mae": 0.4775976836681366, "ref_absmean": 0.12839540839195251, "fused_ms": 0.2615, "unfused_ms": 0.2817, "ratio": 0.9286}
+=== dev3 M256 U64 ===
+RESULT {"M": 256, "U": 64, "rows": 4, "finite": true, "fused_vs_unfused_mae": 0.340210497379303, "ref_absmean": 0.29400375485420227, "fused_ms": 0.1948, "unfused_ms": 0.2101, "ratio": 0.927}
+=== dev3 M128 U64 ===
+RESULT {"M": 128, "U": 64, "rows": 2, "finite": true, "fused_vs_unfused_mae": 0.459121435880661, "ref_absmean": 0.1481444537639618, "fused_ms": 0.1898, "unfused_ms": 0.1976, "ratio": 0.9606}
+=== dev3 M128 U32 ===
+RESULT {"M": 128, "U": 32, "rows": 4, "finite": true, "fused_vs_unfused_mae": 0.5264096260070801, "ref_absmean": 0.0729718804359436, "fused_ms": 0.1556, "unfused_ms": 0.1821, "ratio": 0.8546}
+=== dev3 M64 U32 ===
+RESULT {"M": 64, "U": 32, "rows": 2, "finite": true, "fused_vs_unfused_mae": 0.5294287204742432, "ref_absmean": 0.0727689117193222, "fused_ms": 0.167, "unfused_ms": 0.1908, "ratio": 0.8751}
+=== dev3 M64 U16 ===
+RESULT {"M": 64, "U": 16, "rows": 4, "finite": true, "fused_vs_unfused_mae": 0.5813438892364502, "ref_absmean": 0.0, "fused_ms": 0.1224, "unfused_ms": 0.1508, "ratio": 0.8116}

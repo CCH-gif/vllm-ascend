@@ -1,0 +1,15 @@
+{
+  "op": "matmul_allreduce_add_rmsnorm (TP=1 single-rank)",
+  "correctness": "VERIFIED. add_out == bf16(x@w^T)+residual EXACT (max_abs=0.0); fused rmsnorm y matches torch_npu.npu_rms_norm(add) with max_abs~0.0625 (rel~5e-3, bf16-level). allreduce identity @ rank1.",
+  "perf_method": "per-op wall-clock AFTER torch.distributed hccl init is BROKEN in this torch_npu build (ops report launch-only ~1us even for 137GFLOP gemm; sanity: same gemm in a non-hccl process = 2.5ms). fused op requires a real hccl comm => fused latency not directly measurable in-process.",
+  "clean_process_reference": {
+    "note": "no-hccl process, drain-timed, fresh inputs: torch.matmul [1,8192,2048]x[2048,2048] = 2.5 ms (~55 TFLOPS); matmul dominates the chain",
+    "matmul_8192_us": 2500
+  },
+  "cases": [
+    {"S": 512, "fused_vs_unfused_speedup_est": "n/a (timing broken)", "y_rel": 0.00495},
+    {"S": 2048, "fused_vs_unfused_speedup_est": "n/a (timing broken)", "y_rel": 0.00457},
+    {"S": 8192, "fused_vs_unfused_speedup_est": "n/a (timing broken)", "y_rel": 0.00391}
+  ],
+  "conclusion": "At TP=1 allreduce is identity => fusion saves only the 3 extra host dispatches + intermediate [M,H] read/write between mm/add/rmsnorm. GEMM dominates => per-layer gain <<1%. This op's benefit materializes at TP>1 (saves allreduce traffic); single-rank validation proves fused kernel correctness only."
+}
