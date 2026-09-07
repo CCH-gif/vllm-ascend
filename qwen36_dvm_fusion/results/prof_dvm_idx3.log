@@ -1,0 +1,51 @@
+[W907 03:44:41.726354973 NPUCachingAllocator.cpp:177] Warning: The current CANN and Soc versions require processing for 32 padding size, with memory allocation. (function operator())
+You tried to access the `AttentionInterface` with a `config._attn_implementation` set to `None`. This is expected if you use an Attention Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._attn_implementation`
+You tried to access the `ExpertsInterface` with a `config._experts_implementation` set to `None`. This is expected if you use an Expert Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._experts_implementation`
+/opt/dvmvenv/lib/python3.11/site-packages/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py:735: UserWarning: Cannot create tensor with internal format while allow_internal_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:466.)
+  expert_mask = torch.nn.functional.one_hot(top_k_index, num_classes=self.num_experts)
+USDT:2026-09-07 03:44:42 11368:11368 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-07 03:44:42 11368:11368 SyncActivityProfilerHandler.cpp:59] profiler_stop
+eager CPU dispatch events: 1121  distinct: 86
+Can NOT find torch_mlir, INSTALL it first.
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:44:45.106000 11368 torch/_inductor/debug.py:545] [1/0_1] model__0_forward_1 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_44_44_775916-pid_11368/torchinductor/model__0_forward_1.0
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:44:47.330000 11368 torch/_inductor/debug.py:545] [2/0_1] model__1_forward_4 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_44_44_775916-pid_11368/torchinductor/model__1_forward_4.1
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:44:48.426000 11368 torch/_inductor/debug.py:545] [3/0] model__2_forward_7 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_44_44_775916-pid_11368/torchinductor/model__2_forward_7.2
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:44:49.305000 11368 torch/_inductor/debug.py:545] [4/0_1] model__3_forward_10 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_44_44_775916-pid_11368/torchinductor/model__3_forward_10.3
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:44:50.326000 11368 torch/_inductor/debug.py:545] [5/0_1] model__4_forward_13 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_44_44_775916-pid_11368/torchinductor/model__4_forward_13.4
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:44:50.821000 11368 torch/_inductor/debug.py:545] [8/0_1] model__5_inference_15 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_44_44_775916-pid_11368/torchinductor/model__5_inference_15.5
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:44:51.125000 11368 torch/_inductor/debug.py:545] [10/0] model__6_forward_17 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_44_44_775916-pid_11368/torchinductor/model__6_forward_17.6
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:44:51.541000 11368 torch/_inductor/debug.py:545] [11/0] model__7_forward_20 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_44_44_775916-pid_11368/torchinductor/model__7_forward_20.7
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:44:51.710000 11368 torch/_inductor/debug.py:545] [12/0] model__8_forward_23 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_44_44_775916-pid_11368/torchinductor/model__8_forward_23.8
+compile time 8.6s
+USDT:2026-09-07 03:44:51 11368:11368 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-07 03:44:51 11368:11368 SyncActivityProfilerHandler.cpp:59] profiler_stop
+{
+ "idx": 3,
+ "layer_type": "full_attention",
+ "seq": 64,
+ "eager_dispatch_events": 1121,
+ "eager_distinct": 86,
+ "backend": "dvm",
+ "compiled_median_ms": 21.34,
+ "compiled_dispatch_events": 1018,
+ "compiled_distinct": 98
+}
+PROF DONE

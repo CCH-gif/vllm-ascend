@@ -1,0 +1,10 @@
+{
+ "idx": 3,
+ "sub": "mlp.shared_expert",
+ "seq": 8192,
+ "eager_median_ms": 0.341,
+ "eager_aclnn_ops": 5,
+ "compiled_median_ms": 0.497,
+ "speedup_x": 0.686,
+ "compiled_aclnn_ops": 3
+}

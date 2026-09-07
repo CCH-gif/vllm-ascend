@@ -1,0 +1,12 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+You tried to access the `ExpertsInterface` with a `config._experts_implementation` set to `None`. This is expected if you use an Expert Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._experts_implementation`
+eager CPU dispatch events: 3393  distinct: 117
+{
+ "idx": 0,
+ "layer_type": "linear_attention",
+ "seq": 64,
+ "eager_dispatch_events": 3393,
+ "eager_distinct": 117,
+ "backend": "default"
+}
+PROF DONE

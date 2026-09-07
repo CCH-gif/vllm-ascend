@@ -1,0 +1,25 @@
+embed_tokens (248320, 2048)
+[W907 03:57:04.706617941 NPUCachingAllocator.cpp:177] Warning: The current CANN and Soc versions require processing for 32 padding size, with memory allocation. (function operator())
+warm pass ...
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+You tried to access the `ExpertsInterface` with a `config._experts_implementation` set to `None`. This is expected if you use an Expert Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._experts_implementation`
+/opt/dvmvenv/lib/python3.11/site-packages/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py:735: UserWarning: Cannot create tensor with internal format while allow_internal_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:466.)
+  expert_mask = torch.nn.functional.one_hot(top_k_index, num_classes=self.num_experts)
+You tried to access the `AttentionInterface` with a `config._attn_implementation` set to `None`. This is expected if you use an Attention Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._attn_implementation`
+warm total 1.5s
+pass 0 total 1.2s
+pass 1 total 1.2s
+{
+ "seq": 256,
+ "device": 3,
+ "total_ms": 1186.8,
+ "linear_ms": 1045.8,
+ "linear_n": 30,
+ "full_ms": 141.0,
+ "full_n": 10,
+ "stack": "dvm26",
+ "wall_passes": 2
+}
+saved ../results/eager26_p256.json
+saved states ../results/eager26_p256_states.pt ['0', '3']
+EAGER DONE

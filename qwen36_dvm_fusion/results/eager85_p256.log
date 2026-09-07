@@ -1,0 +1,22 @@
+embed_tokens (248320, 2048)
+warm pass ...
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+You tried to access the `ExpertsInterface` with a `config._experts_implementation` set to `None`. This is expected if you use an Expert Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._experts_implementation`
+You tried to access the `AttentionInterface` with a `config._attn_implementation` set to `None`. This is expected if you use an Attention Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._attn_implementation`
+warm total 2.9s
+pass 0 total 1.0s
+pass 1 total 1.0s
+{
+ "seq": 256,
+ "device": 3,
+ "total_ms": 930.8,
+ "linear_ms": 805.6,
+ "linear_n": 30,
+ "full_ms": 125.2,
+ "full_n": 10,
+ "stack": "85",
+ "wall_passes": 2
+}
+saved ../results/eager85_p256.json
+saved states ../results/eager85_p256_states.pt ['0', '3']
+EAGER DONE

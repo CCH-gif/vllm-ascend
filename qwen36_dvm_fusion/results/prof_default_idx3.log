@@ -1,0 +1,16 @@
+You tried to access the `AttentionInterface` with a `config._attn_implementation` set to `None`. This is expected if you use an Attention Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._attn_implementation`
+You tried to access the `ExpertsInterface` with a `config._experts_implementation` set to `None`. This is expected if you use an Expert Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._experts_implementation`
+eager CPU dispatch events: 1084  distinct: 85
+/usr/local/python3.11.13/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+COMPILE FAILED: BackendCompilerFailed('backend=\'inductor\' raised:\nRuntimeError: 0 active drivers ([]). There should only be one.\n\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you\'re reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"\n')
+{
+ "idx": 3,
+ "layer_type": "full_attention",
+ "seq": 64,
+ "eager_dispatch_events": 1084,
+ "eager_distinct": 85,
+ "backend": "default",
+ "compile_error": "BackendCompilerFailed('backend=\\'inductor\\' raised:\\nRuntimeError: 0 active drivers ([]). There should only be one.\\n\\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you\\'re reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\\n"
+}
+PROF DONE

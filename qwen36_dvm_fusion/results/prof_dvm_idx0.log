@@ -1,0 +1,23 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[W907 03:44:58.506715662 NPUCachingAllocator.cpp:177] Warning: The current CANN and Soc versions require processing for 32 padding size, with memory allocation. (function operator())
+You tried to access the `ExpertsInterface` with a `config._experts_implementation` set to `None`. This is expected if you use an Expert Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._experts_implementation`
+/opt/dvmvenv/lib/python3.11/site-packages/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py:735: UserWarning: Cannot create tensor with internal format while allow_internal_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:466.)
+  expert_mask = torch.nn.functional.one_hot(top_k_index, num_classes=self.num_experts)
+USDT:2026-09-07 03:44:59 11442:11442 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-07 03:44:59 11442:11442 SyncActivityProfilerHandler.cpp:59] profiler_stop
+eager CPU dispatch events: 3559  distinct: 115
+Can NOT find torch_mlir, INSTALL it first.
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:45:53.139000 11442 torch/_inductor/debug.py:545] [1/0_1] model__0_forward_1 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_45_21_807521-pid_11442/torchinductor/model__0_forward_1.0
+COMPILE FAILED: RuntimeError('arange_out_op_api:../third_party/op-plugin/op_plugin/ops/opapi/ArangeKernelNpuOpApi.cpp:39 NPU function error: call aclnnArange failed, error code is 161002\n[ERROR] 2026-09-07-03:45:53 (PID:11442, Device:3, RankID:-1) ERR00100 PTA call acl api failed.\n[PID: 11442] 2026-09-07-03:45:53.416.641 AclNN_Parameter_Error(EZ1001): Tensor out not implemented for DT_UINT8, should be in dtype support list [DT_FLOAT16,DT_FLOAT,DT_DOUBLE,DT_INT64,DT_INT32,DT_BFLOAT16,].\n')
+{
+ "idx": 0,
+ "layer_type": "linear_attention",
+ "seq": 64,
+ "eager_dispatch_events": 3559,
+ "eager_distinct": 115,
+ "backend": "dvm",
+ "compile_error": "RuntimeError('arange_out_op_api:../third_party/op-plugin/op_plugin/ops/opapi/ArangeKernelNpuOpApi.cpp:39 NPU function error: call aclnnArange failed, error code is 161002\\n[ERROR] 2026-09-07-03:45:53 (PID:11442, Device:3, RankID:-1) ERR00100 PTA call acl api failed.\\n[PID: 11442] 2026-09-07-03:45:53"
+}
+PROF DONE

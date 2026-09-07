@@ -1,0 +1,27 @@
+[W907 03:47:41.611412006 NPUCachingAllocator.cpp:177] Warning: The current CANN and Soc versions require processing for 32 padding size, with memory allocation. (function operator())
+You tried to access the `AttentionInterface` with a `config._attn_implementation` set to `None`. This is expected if you use an Attention Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._attn_implementation`
+You tried to access the `ExpertsInterface` with a `config._experts_implementation` set to `None`. This is expected if you use an Expert Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._experts_implementation`
+/opt/dvmvenv/lib/python3.11/site-packages/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py:735: UserWarning: Cannot create tensor with internal format while allow_internal_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:466.)
+  expert_mask = torch.nn.functional.one_hot(top_k_index, num_classes=self.num_experts)
+USDT:2026-09-07 03:47:42 12517:12517 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-07 03:47:42 12517:12517 SyncActivityProfilerHandler.cpp:59] profiler_stop
+eager: median 16.51 ms | CPU dispatch 1121 | NPU kernels 0 (0 types)
+W0907 03:47:44.402000 12517 torch/_inductor/codecache.py:1193] [1/0_1] pre_grad_custom_pass run_register_pre_custom_passes does not implement uuid(); falling back to early timing (pre-grad pass cache will be bypassed). Implement uuid() on your CustomGraphPass to enable caching.
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:47:45.416000 12517 torch/_inductor/debug.py:545] [1/0_1] model__0_forward_1 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/harness/torch_compile_debug/run_2026_09_07_03_47_45_131771-pid_12517/torchinductor/model__0_forward_1.0
+COMPILE FAILED: InductorError('RuntimeError: 0 active drivers ([]). There should only be one.\n\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you\'re reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"\n')
+{
+ "idx": 3,
+ "layer_type": "full_attention",
+ "seq": 64,
+ "backend": "triton",
+ "eager_median_ms": 16.51,
+ "eager_cpu_dispatch": 1121,
+ "eager_npu_kernels": 0,
+ "eager_npu_kernel_types": 0,
+ "compile_error": "InductorError('RuntimeError: 0 active drivers ([]). There should only be one.\\n\\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you\\'re reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\\n')"
+}
+PROF DONE

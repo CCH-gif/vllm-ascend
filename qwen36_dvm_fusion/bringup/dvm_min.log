@@ -1,0 +1,10 @@
+TORCHINDUCTOR_NPU_BACKEND = dvm
+Can NOT find torch_mlir, INSTALL it first.
+loader map has dvm: True
+ic.npu_backend = default
+[W907 03:44:00.459950573 NPUCachingAllocator.cpp:177] Warning: The current CANN and Soc versions require processing for 32 padding size, with memory allocation. (function operator())
+/opt/dvmvenv/lib/python3.11/site-packages/triton/backends/ascend/driver.py:179: UserWarning: [31;20m[Errno 2] No such file or directory: 'ccec'[0m
+  warnings.warn(red + str(e_npucompiler) + reset)
+W0907 03:44:02.287000 10921 torch/_inductor/debug.py:545] [0/0] model__0_inference_0 debug trace: /workspace/ascend-operator-agent-v2-gitcode6.18/qwen36_dvm_fusion/bringup/torch_compile_debug/run_2026_09_07_03_44_01_902780-pid_10921/torchinductor/model__0_inference_0.0
+compile first-call 1.4s
+DVM OK  out (8, 256) maxerr_vs_eager 0.0312

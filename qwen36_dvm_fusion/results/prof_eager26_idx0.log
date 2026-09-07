@@ -1,0 +1,18 @@
+The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+[W907 03:55:00.814890589 NPUCachingAllocator.cpp:177] Warning: The current CANN and Soc versions require processing for 32 padding size, with memory allocation. (function operator())
+You tried to access the `ExpertsInterface` with a `config._experts_implementation` set to `None`. This is expected if you use an Expert Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._experts_implementation`
+/opt/dvmvenv/lib/python3.11/site-packages/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py:735: UserWarning: Cannot create tensor with internal format while allow_internal_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:466.)
+  expert_mask = torch.nn.functional.one_hot(top_k_index, num_classes=self.num_experts)
+USDT:2026-09-07 03:55:01 15663:15663 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-09-07 03:55:01 15663:15663 SyncActivityProfilerHandler.cpp:59] profiler_stop
+eager: median 33.15 ms | CPU dispatch 3559 | aclnn(dvk) 607 (37 types)
+{
+ "idx": 0,
+ "layer_type": "linear_attention",
+ "seq": 64,
+ "backend": "eager26",
+ "eager_median_ms": 33.15,
+ "eager_cpu_dispatch": 3559,
+ "eager_aclnn_ops": 607
+}
+PROF DONE

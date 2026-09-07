@@ -1,0 +1,12 @@
+{
+ "idx": 3,
+ "layer_type": "full_attention",
+ "seq": 64,
+ "backend": "triton",
+ "eager_median_ms": 16.51,
+ "eager_cpu_dispatch": 1121,
+ "eager_npu_kernels": 0,
+ "eager_npu_kernel_types": 0,
+ "eager_kernel_samples": [],
+ "compile_error": "InductorError('RuntimeError: 0 active drivers ([]). There should only be one.\\n\\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you\\'re reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\\n')"
+}
