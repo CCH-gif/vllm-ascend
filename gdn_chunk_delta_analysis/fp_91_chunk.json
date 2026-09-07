@@ -1,0 +1,152 @@
+{
+ "op": "ChunkGatedDeltaRule",
+ "root": "/tmp/cann91/root/usr/local/Ascend/cann-9.1.0",
+ "version_hint": null,
+ "files": {
+  "aclnn_header": [
+   {
+    "rel": "aarch64-linux/include/aclnnop/aclnn_chunk_gated_delta_rule.h",
+    "sha256": "0ec564993f170ce0638ac147cc8b617b5f29670c71d06fb8eb61d9296406deb2",
+    "size": 2759
+   },
+   {
+    "rel": "include/aclnnop/aclnn_chunk_gated_delta_rule.h",
+    "sha256": "0ec564993f170ce0638ac147cc8b617b5f29670c71d06fb8eb61d9296406deb2",
+    "size": 2759
+   },
+   {
+    "rel": "aarch64-linux/include/aclnnop/level2/aclnn_chunk_gated_delta_rule.h",
+    "sha256": "5e8a9d46da1357092c325d355665c9057aa1d6d443e5c866bc4a327ac935d597",
+    "size": 2919
+   }
+  ],
+  "ascendc_src": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/chunk_gated_delta_rule/chunk_gated_delta_rule.cpp",
+    "sha256": "3c2d30137833a8ad775e06dd34d984cab4c7193e5538da85b9ff8537713c72e1",
+    "size": 1609
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/chunk_gated_delta_rule/chunk_gated_delta_rule.h",
+    "sha256": "c02b947260c73f24212416af0ea6192165cc4d31958d3cff59921260f7d66f74",
+    "size": 13770
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/chunk_gated_delta_rule/chunk_gated_delta_rule_stage1.h",
+    "sha256": "0d1d27c6db49b45edfc80996dd92b8c9f8d1d560ac6cb64263c782265d18bd37",
+    "size": 44055
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/chunk_gated_delta_rule/chunk_gated_delta_rule_stage2.h",
+    "sha256": "ed7e4802ddb797ece6ff1a22686e3c9a6aaae7b9d861b7ae8dbf7d55096f253d",
+    "size": 11381
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/chunk_gated_delta_rule/chunk_gated_delta_rule_stage3.h",
+    "sha256": "bd29b111d6e7e90e9dfe3daa1aa9b52aae4b6671cd3d36845435c66ea7eb842e",
+    "size": 11010
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/chunk_gated_delta_rule/chunk_gated_delta_rule_tiling_data.h",
+    "sha256": "f76042dfa500f6b70c94a7f07306ed19978033c5a25bec6c5afb7469fac5dbb9",
+    "size": 1907
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/chunk_gated_delta_rule/chunk_gated_delta_rule_utils.h",
+    "sha256": "bee99011d4d38a66cd7b61963c98b718b776509101a6715bfcbbf990542acf4e",
+    "size": 2092
+   }
+  ],
+  "dynamic_py": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/dynamic/chunk_gated_delta_rule.py",
+    "sha256": "b515698da8189e0059c67cf4d1ad68c2a4dfc2bef392d2a00425824f18a23826",
+    "size": 12992
+   }
+  ],
+  "kernel_config_json": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/kernel/config/ascend910b/ops_transformer/chunk_gated_delta_rule.json",
+    "sha256": "265cb9873267c4a315123104f207cb4ab64c3fce3cb6e17bddf8cc633104b59a",
+    "size": 3451
+   }
+  ],
+  "kernel_bin_ascend910b": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/kernel/ascend910b/ops_transformer/chunk_gated_delta_rule/ChunkGatedDeltaRule_b8eaf39689b840ee88390d15b17183a4.json",
+    "sha256": "c38566e728c1cc14a0b259100249b3c7b118781c5d07ec616d68bf931dc2434a",
+    "size": 3624
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/kernel/ascend910b/ops_transformer/chunk_gated_delta_rule/ChunkGatedDeltaRule_b8eaf39689b840ee88390d15b17183a4.o",
+    "sha256": "e1d1845b5d7cb4ae7da1ad4fca591cc2c3974e7bb8c56ad2dea0b82dad300e84",
+    "size": 162408
+   }
+  ]
+ },
+ "aclnn_decl": [
+  "aclnnChunkGatedDeltaRuleGetWorkspaceSize( const aclTensor *query, const aclTensor *key, const aclTensor *value, const aclTensor *beta, const aclTensor *initialState, const aclTensor *actualSeqLengths, const aclTensor *gOptional, float scaleValue, const aclTensor *out, const aclTensor *finalState, uint64_t *workspaceSize, aclOpExecutor **executor);",
+  "aclnnChunkGatedDeltaRule(void *workspace, uint64_t workspaceSize, aclOpExecutor *executor, aclrtStream stream);"
+ ],
+ "kernel_summary": {
+  "opp/built-in/op_impl/ai_core/tbe/kernel/ascend910b/ops_transformer/chunk_gated_delta_rule/ChunkGatedDeltaRule_b8eaf39689b840ee88390d15b17183a4.json": {
+   "bin": "ChunkGatedDeltaRule_b8eaf39689b840ee88390d15b17183a4",
+   "o_sha256": "e1d1845b5d7cb4ae7da1ad4fca591cc2c3974e7bb8c56ad2dea0b82dad300e84",
+   "staticKey": "e4fd1dae2e5a658b2330b1092eae758f72ae45ef33ff9d1fdde254e7a9c58b77,088630d1500573d8c4513812975d8cd14008b20b465bc135d2034eee33e4440f",
+   "coreType": "MIX",
+   "magic": "RT_DEV_BINARY_MAGIC_ELF",
+   "implMode": "high_performance",
+   "kernelList": [
+    {
+     "tilingKey": 0,
+     "kernelType": "MIX_AIC",
+     "crossCoreSync": 1,
+     "taskRation": "1:2",
+     "kernelName": "ChunkGatedDeltaRule_b8eaf39689b840ee88390d15b17183a4_0"
+    }
+   ],
+   "n_inputs": 7,
+   "n_outputs": 2,
+   "attrs": [
+    "scale_value"
+   ],
+   "input_sig": [
+    [
+     "query",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "key",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "value",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "beta",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "initial_state",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "actual_seq_lengths",
+     "int32",
+     "required"
+    ],
+    [
+     "g",
+     "float32",
+     "optional"
+    ]
+   ]
+  }
+ }
+}

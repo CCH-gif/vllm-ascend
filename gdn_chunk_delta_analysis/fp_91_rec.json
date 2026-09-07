@@ -1,0 +1,148 @@
+{
+ "op": "RecurrentGatedDeltaRule",
+ "root": "/tmp/cann91/root/usr/local/Ascend/cann-9.1.0",
+ "version_hint": null,
+ "files": {
+  "aclnn_header": [
+   {
+    "rel": "aarch64-linux/include/aclnnop/aclnn_recurrent_gated_delta_rule.h",
+    "sha256": "b0819715bfe3cc3511924abb9cd2b5b4acc460bd1d98f20de3d2ffc778fd0b29",
+    "size": 2929
+   },
+   {
+    "rel": "include/aclnnop/aclnn_recurrent_gated_delta_rule.h",
+    "sha256": "b0819715bfe3cc3511924abb9cd2b5b4acc460bd1d98f20de3d2ffc778fd0b29",
+    "size": 2929
+   },
+   {
+    "rel": "aarch64-linux/include/aclnnop/level2/aclnn_recurrent_gated_delta_rule.h",
+    "sha256": "95e04eadc744c269cc90a965c3aff46e5f37bf4e688c5e7f22c30998d67dbebd",
+    "size": 3089
+   }
+  ],
+  "ascendc_src": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/recurrent_gated_delta_rule/recurrent_gated_delta_rule.cpp",
+    "sha256": "b1b6d72db33eec0a832e927e297718992c2711beae83368dbf8912f1ae60ca8d",
+    "size": 1704
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/recurrent_gated_delta_rule/recurrent_gated_delta_rule_apt.cpp",
+    "sha256": "8825dbf918d72d2e4a26409d47162ef47085f5a6093ba27faa60fc1ab0d3ef74",
+    "size": 1735
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/recurrent_gated_delta_rule/recurrent_gated_delta_rule_tiling_data.h",
+    "sha256": "cd527e04de9b4e914d1242697eadcae6074deb40f885e49d4b36e3a4b7ec7e37",
+    "size": 1483
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/recurrent_gated_delta_rule/arch22/recurrent_gated_delta_rule.h",
+    "sha256": "7698d294a3e5111c7f41d9b534363d05b0dd12ba423c1099b649b83db7458538",
+    "size": 19966
+   }
+  ],
+  "dynamic_py": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/dynamic/recurrent_gated_delta_rule.py",
+    "sha256": "e361e2c8011d8c7f99567f464c5bb4ad31fb3c01ef6acc99a41b6574bc310527",
+    "size": 13688
+   }
+  ],
+  "kernel_config_json": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/kernel/config/ascend910b/ops_transformer/recurrent_gated_delta_rule.json",
+    "sha256": "db026e0d2e6e42c413ef950dc6e267ff1798aa2ff274f0cd2dddddbb983a2a62",
+    "size": 4270
+   }
+  ],
+  "kernel_bin_ascend910b": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/kernel/ascend910b/ops_transformer/recurrent_gated_delta_rule/RecurrentGatedDeltaRule_85669048de2f4ae7785fd8d81b12f70b.json",
+    "sha256": "3c7cd29f5013d8f3d06f9310fc6a2d2c9812273fd59a19877ec8a1168b847343",
+    "size": 4195
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/kernel/ascend910b/ops_transformer/recurrent_gated_delta_rule/RecurrentGatedDeltaRule_85669048de2f4ae7785fd8d81b12f70b.o",
+    "sha256": "e683ff4eea507e9084d7b34a806825f994de915723445ab757f94a1463ff35de",
+    "size": 26464
+   }
+  ]
+ },
+ "aclnn_decl": [
+  "aclnnRecurrentGatedDeltaRuleGetWorkspaceSize( const aclTensor *query, const aclTensor *key, const aclTensor *value, const aclTensor *beta, aclTensor *stateRef, const aclTensor *actualSeqLengths, const aclTensor *ssmStateIndices, const aclTensor *g, const aclTensor *gk, const aclTensor *numAcceptedTokens, float scaleValue, aclTensor *out, uint64_t *workspaceSize, aclOpExecutor **executor);",
+  "aclnnRecurrentGatedDeltaRule(void *workspace, uint64_t workspaceSize, aclOpExecutor *executor, aclrtStream stream);"
+ ],
+ "kernel_summary": {
+  "opp/built-in/op_impl/ai_core/tbe/kernel/ascend910b/ops_transformer/recurrent_gated_delta_rule/RecurrentGatedDeltaRule_85669048de2f4ae7785fd8d81b12f70b.json": {
+   "bin": "RecurrentGatedDeltaRule_85669048de2f4ae7785fd8d81b12f70b",
+   "o_sha256": "e683ff4eea507e9084d7b34a806825f994de915723445ab757f94a1463ff35de",
+   "staticKey": "c4d0c9585aa82db82a9d341ac5826ab42d56ea2f15b738b21ed0895888699b07,4b33de0d0f19be0f9a9824e15f99ed408454f530460ffb4512ac6b36e04ff2a6",
+   "coreType": "VectorCore",
+   "magic": "RT_DEV_BINARY_MAGIC_ELF_AIVEC",
+   "implMode": "high_performance",
+   "kernelList": [
+    {
+     "kernelName": "RecurrentGatedDeltaRule_85669048de2f4ae7785fd8d81b12f70b_0"
+    }
+   ],
+   "n_inputs": 10,
+   "n_outputs": 2,
+   "attrs": [
+    "scale_value"
+   ],
+   "input_sig": [
+    [
+     "query",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "key",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "value",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "beta",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "state",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "actual_seq_lengths",
+     "int32",
+     "required"
+    ],
+    [
+     "ssm_state_indices",
+     "int32",
+     "required"
+    ],
+    [
+     "g",
+     "float32",
+     "optional"
+    ],
+    [
+     "gk",
+     "float32",
+     "optional"
+    ],
+    [
+     "num_accepted_tokens",
+     "int32",
+     "optional"
+    ]
+   ]
+  }
+ }
+}

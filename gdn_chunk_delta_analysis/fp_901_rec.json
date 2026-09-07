@@ -1,0 +1,143 @@
+{
+ "op": "RecurrentGatedDeltaRule",
+ "root": "x901/usr/local/Ascend/cann-9.0.1",
+ "version_hint": null,
+ "files": {
+  "aclnn_header": [
+   {
+    "rel": "aarch64-linux/include/aclnnop/aclnn_recurrent_gated_delta_rule.h",
+    "sha256": "b0819715bfe3cc3511924abb9cd2b5b4acc460bd1d98f20de3d2ffc778fd0b29",
+    "size": 2929
+   },
+   {
+    "rel": "aarch64-linux/include/aclnnop/aclnn_recurrent_gated_delta_rule.h",
+    "sha256": "b0819715bfe3cc3511924abb9cd2b5b4acc460bd1d98f20de3d2ffc778fd0b29",
+    "size": 2929
+   },
+   {
+    "rel": "aarch64-linux/include/aclnnop/level2/aclnn_recurrent_gated_delta_rule.h",
+    "sha256": "b0819715bfe3cc3511924abb9cd2b5b4acc460bd1d98f20de3d2ffc778fd0b29",
+    "size": 2929
+   }
+  ],
+  "ascendc_src": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/recurrent_gated_delta_rule/recurrent_gated_delta_rule.cpp",
+    "sha256": "5ea0cecbe238a02e5d14f4dcc26af6c9e31a06b6a7138eb0b25a61d4c957b66f",
+    "size": 1697
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/recurrent_gated_delta_rule/recurrent_gated_delta_rule.h",
+    "sha256": "3681292c16a289e6a56e48708241d7a40a6086f00e0d92e0de442d70538dd0c2",
+    "size": 19759
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/ascendc/recurrent_gated_delta_rule/recurrent_gated_delta_rule_tiling_data.h",
+    "sha256": "b55f5cf11d5b3d947ca65bec068acbc4d6158bafd29f4f4be76c099b1e731bec",
+    "size": 1419
+   }
+  ],
+  "dynamic_py": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/impl/ops_transformer/dynamic/recurrent_gated_delta_rule.py",
+    "sha256": "6a9613d1e21a99af2b62c8c75432bdbe23cacc95cf2d0f1314a354326b237146",
+    "size": 13486
+   }
+  ],
+  "kernel_config_json": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/kernel/config/ascend910b/ops_transformer/recurrent_gated_delta_rule.json",
+    "sha256": "db026e0d2e6e42c413ef950dc6e267ff1798aa2ff274f0cd2dddddbb983a2a62",
+    "size": 4270
+   }
+  ],
+  "kernel_bin_ascend910b": [
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/kernel/ascend910b/ops_transformer/recurrent_gated_delta_rule/RecurrentGatedDeltaRule_85669048de2f4ae7785fd8d81b12f70b.json",
+    "sha256": "b5b8cc78c45a99e520244fe4db8d08fcfe316c1cf9453817b990633c6951c3cf",
+    "size": 4195
+   },
+   {
+    "rel": "opp/built-in/op_impl/ai_core/tbe/kernel/ascend910b/ops_transformer/recurrent_gated_delta_rule/RecurrentGatedDeltaRule_85669048de2f4ae7785fd8d81b12f70b.o",
+    "sha256": "50e47844450f3af1b1087104b0ac64ba093ee365f6ba0c0accc414288d60a90b",
+    "size": 26464
+   }
+  ]
+ },
+ "aclnn_decl": [
+  "aclnnRecurrentGatedDeltaRuleGetWorkspaceSize( const aclTensor *query, const aclTensor *key, const aclTensor *value, const aclTensor *beta, aclTensor *stateRef, const aclTensor *actualSeqLengths, const aclTensor *ssmStateIndices, const aclTensor *g, const aclTensor *gk, const aclTensor *numAcceptedTokens, float scaleValue, aclTensor *out, uint64_t *workspaceSize, aclOpExecutor **executor);",
+  "aclnnRecurrentGatedDeltaRule(void *workspace, uint64_t workspaceSize, aclOpExecutor *executor, aclrtStream stream);"
+ ],
+ "kernel_summary": {
+  "opp/built-in/op_impl/ai_core/tbe/kernel/ascend910b/ops_transformer/recurrent_gated_delta_rule/RecurrentGatedDeltaRule_85669048de2f4ae7785fd8d81b12f70b.json": {
+   "bin": "RecurrentGatedDeltaRule_85669048de2f4ae7785fd8d81b12f70b",
+   "o_sha256": "50e47844450f3af1b1087104b0ac64ba093ee365f6ba0c0accc414288d60a90b",
+   "staticKey": "c4d0c9585aa82db82a9d341ac5826ab42d56ea2f15b738b21ed0895888699b07,4b33de0d0f19be0f9a9824e15f99ed408454f530460ffb4512ac6b36e04ff2a6",
+   "coreType": "VectorCore",
+   "magic": "RT_DEV_BINARY_MAGIC_ELF_AIVEC",
+   "implMode": "high_performance",
+   "kernelList": [
+    {
+     "kernelName": "RecurrentGatedDeltaRule_85669048de2f4ae7785fd8d81b12f70b_0"
+    }
+   ],
+   "n_inputs": 10,
+   "n_outputs": 2,
+   "attrs": [
+    "scale_value"
+   ],
+   "input_sig": [
+    [
+     "query",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "key",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "value",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "beta",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "state",
+     "bfloat16",
+     "required"
+    ],
+    [
+     "actual_seq_lengths",
+     "int32",
+     "required"
+    ],
+    [
+     "ssm_state_indices",
+     "int32",
+     "required"
+    ],
+    [
+     "g",
+     "float32",
+     "optional"
+    ],
+    [
+     "gk",
+     "float32",
+     "optional"
+    ],
+    [
+     "num_accepted_tokens",
+     "int32",
+     "optional"
+    ]
+   ]
+  }
+ }
+}

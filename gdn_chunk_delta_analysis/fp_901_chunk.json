@@ -1,0 +1,8 @@
+{
+ "op": "ChunkGatedDeltaRule",
+ "root": "x901/usr/local/Ascend/cann-9.0.1",
+ "version_hint": null,
+ "files": {},
+ "aclnn_decl": null,
+ "kernel_summary": {}
+}
