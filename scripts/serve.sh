@@ -1,6 +1,23 @@
 #!/bin/bash
 # Triton LoRA serving — recommended (high-concurrency-safe) config.
 #
+# HOW TO INSTALL INTO YOUR OWN vllm-ascend SOURCE TREE (drop-in, no upstream edit):
+#   1. Copy these 6 files from this repo's ROOT into <vllm-ascend>/vllm_ascend/lora/:
+#        OVERWRITE: lora_ops.py                       (routes the LoRA ops to Triton)
+#        ADD:       lora_ops_triton.py  lora_ops_triton_kernels.py
+#                   lora_cpp_launcher.cpp  lora_cpp_launcher.cpython-312-aarch64-linux-gnu.so
+#                   lora_native_ops.cpp
+#   2. C++: lora_native_ops.so auto-builds on first import (see _native_build() in
+#      lora_ops_triton.py; needs g++ + torch/CANN dev headers on PATH). The committed
+#      lora_cpp_launcher.so is prebuilt for python3.12 + aarch64 — if your python
+#      version/arch differs, rebuild lora_cpp_launcher.cpp with the same g++ flags
+#      that _native_build() uses.
+#   3. Version: built against recent vllm-ascend main (V1 engine). On an older version
+#      whose PunicaWrapper LoRA call signatures differ, adjust the wrappers in lora_ops.py.
+#   4. Below: replace /models/Qwen3.5-27B and the openscad LoRA path with yours. After
+#      boot, verify LoRA is LIVE (openscad vs base output must differ on a CODE-domain
+#      prompt — a prose prompt can be a false negative).
+#
 # WHY the two non-obvious flags (measured 2026-09-09, Qwen3.5-27B + openscad
 # LoRA on Ascend 910B4 64 GB):
 #
