@@ -14,6 +14,15 @@ case "$LORA_IMPL" in
 esac
 # 换实现必须清掉字节码，否则 __pycache__ 里是上一版
 rm -rf $LORA_DIR/__pycache__
+#
+# ⚠️ 必须设 TRITON_LORA_NATIVE=1（下面给了默认值）。它决定 Triton 算子注册到哪条
+#    dispatch key 上（lora_ops_triton.py:1238）：
+#      =1 → 载入 lora_native_ops.so，注册到 PrivateUse1，与 AscendC 自身同构
+#      否则 → torch.library.custom_op，注册到 Python key
+#    Python key 的优先级高于 PrivateUse1，且实测在 dense 基座上端到端劣化 21.5%
+#    （c1_4k 39.48 vs 50.29 tok/s），在 MoE 上不敏感。故默认打开。
+#    生效时每个 worker 打一行 "[triton-lora] native kPrivateUse1 impls ACTIVE"。
+export TRITON_LORA_NATIVE="${TRITON_LORA_NATIVE:-1}"
 source /tmp/e2e/env.sh
 source /tmp/e2e/model.sh
 # MoE 专属参数，dense 基座下必须去掉：--enable-expert-parallel 对没有专家的
